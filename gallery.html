@@ -2,18 +2,66 @@
 <html lang="ru">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Галерея</title>
-    <link rel="stylesheet" href="Style Sheets/style.css">
-    <script src="JavaScripts/script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Галерея — Ebook</title>
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="font.css">
+    <style>
+        .gallery-section {
+            padding: 40px 0;
+        }
+
+        .gallery-description {
+            text-align: center;
+            margin-bottom: 32px;
+            color: var(--muted);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .gallery-grid a {
+            display: block;
+            text-align: center;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            max-width: 100px;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            transition: transform 0.2s;
+        }
+
+        .gallery-grid img:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-grid figcaption {
+            margin-top: 8px;
+            font-size: 14px;
+            color: var(--muted);
+        }
+    </style>
 </head>
 
-<body data-page="gallery">
-
+<body>
     <header class="site-header">
         <div class="container header-inner">
-            <a class="logo" href="index.html"><img src="images/logo.svg" alt="Ebook"></a>
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Ebook">
+            </a>
             <nav class="main-nav">
                 <a href="index.html">Главная</a>
                 <a href="about.html">О сервисе</a>
@@ -22,27 +70,75 @@
                 <a href="algoritm.html">Задача</a>
                 <a href="passport.html">Паспорт</a>
             </nav>
-            <button id="theme-toggle" class="theme-btn" type="button">
-                <img src="images/theme-toggle.svg" alt="">
+            <button id="theme-toggle" class="theme-btn">
+                <img src="images/sun.svg" alt="Сменить тему">
             </button>
         </div>
     </header>
 
-    <main class="container section">
+    <main class="container">
         <h1>Галерея</h1>
-        <p>Кликните по миниатюре — откроется изображение в новой вкладке.</p>
+        <p class="gallery-description">Кликните по миниатюре — откроется изображение в новой вкладке.</p>
 
-        <div class="gallery-grid">
-            <a href="images/gallery-1.png" target="_blank"><img src="images/gallery-1.png" alt="gallery 1"></a>
-            <a href="images/gallery-2.png" target="_blank"><img src="images/gallery-2.png" alt="gallery 2"></a>
-            <a href="images/gallery-3.png" target="_blank"><img src="images/gallery-3.png" alt="gallery 3"></a>
-            <a href="images/gallery-4.png" target="_blank"><img src="images/gallery-4.png" alt="gallery 4"></a>
-            <a href="images/gallery-5.png" target="_blank"><img src="images/gallery-5.png" alt="gallery 5"></a>
-            <a href="images/gallery-6.png" target="_blank"><img src="images/gallery-6.png" alt="gallery 6"></a>
-            <a href="images/gallery-7.png" target="_blank"><img src="images/gallery-7.png" alt="gallery 7"></a>
+        <section class="gallery-section">
+            <div class="gallery-grid">
+                <figure>
+                    <a href="images/gallery/large1.jpg" target="_blank">
+                        <img src="images/gallery/thumb1.jpg" alt="Классическая литература">
+                    </a>
+                    <figcaption>Классика</figcaption>
+                </figure>
+                <figure>
+                    <a href="images/gallery/large2.jpg" target="_blank">
+                        <img src="images/gallery/thumb2.jpg" alt="Научно-популярные книги">
+                    </a>
+                    <figcaption>Наука</figcaption>
+                </figure>
+                <figure>
+                    <a href="images/gallery/large3.jpg" target="_blank">
+                        <img src="images/gallery/thumb3.jpg" alt="Современная проза">
+                    </a>
+                    <figcaption>Проза</figcaption>
+                </figure>
+                <figure>
+                    <a href="images/gallery/large4.jpg" target="_blank">
+                        <img src="images/gallery/thumb4.jpg" alt="Бизнес литература">
+                    </a>
+                    <figcaption>Бизнес</figcaption>
+                </figure>
+                <figure>
+                    <a href="images/gallery/large5.jpg" target="_blank">
+                        <img src="images/gallery/thumb5.jpg" alt="Детские книги">
+                    </a>
+                    <figcaption>Детям</figcaption>
+                </figure>
+                <figure>
+                    <a href="images/gallery/large6.jpg" target="_blank">
+                        <img src="images/gallery/thumb6.jpg" alt="Фантастика">
+                    </a>
+                    <figcaption>Фантастика</figcaption>
+                </figure>
+                <figure>
+                    <a href="images/gallery/large7.jpg" target="_blank">
+                        <img src="images/gallery/thumb7.jpg" alt="Поэзия">
+                    </a>
+                    <figcaption>Поэзия</figcaption>
+                </figure>
+                <figure>
+                    <a href="images/gallery/large8.jpg" target="_blank">
+                        <img src="images/gallery/thumb8.jpg" alt="Исторические книги">
+                    </a>
+                    <figcaption>История</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <div class="inner-nav">
+            <a href="#top">↑ К началу</a>
         </div>
     </main>
 
+    <script src="scripts.js"></script>
 </body>
 
 </html>

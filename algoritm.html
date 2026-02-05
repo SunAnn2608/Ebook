@@ -5,19 +5,108 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Алгоритмическая задача №121</title>
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="font.css">
+    <style>
+        .task-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 24px;
+        }
 
-    <link rel="stylesheet" href="Style Sheets/style.css">
-    <script src="JavaScripts/script.js" defer></script>
+        .task-description {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            max-width: 200px;
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--card);
+            color: var(--text);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        button {
+            background: var(--accent);
+            color: #000;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        button.secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text);
+        }
+
+        .result-box {
+            margin-top: 20px;
+            padding: 16px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .result-box.show {
+            display: block;
+        }
+
+        .result-success {
+            background: rgba(0, 200, 0, 0.1);
+            border: 1px solid rgba(0, 200, 0, 0.3);
+        }
+
+        .result-error {
+            background: rgba(200, 0, 0, 0.1);
+            border: 1px solid rgba(200, 0, 0, 0.3);
+        }
+
+        .server-info {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 16px;
+            border-radius: 12px;
+            margin-top: 24px;
+            font-size: 14px;
+        }
+
+        code {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+    </style>
 </head>
 
-<body data-page="algoritm">
-
+<body>
     <header class="site-header">
         <div class="container header-inner">
-            <a class="logo" href="index.html">
-                <img src="images/logo.svg" alt="Ebook">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Ebook">
             </a>
-
             <nav class="main-nav">
                 <a href="index.html">Главная</a>
                 <a href="about.html">О сервисе</a>
@@ -26,95 +115,125 @@
                 <a href="algoritm.html" class="active">Задача</a>
                 <a href="passport.html">Паспорт</a>
             </nav>
-
-            <button id="theme-toggle" class="theme-btn" type="button">
-                <img src="images/theme-toggle.svg" alt="Переключить тему">
+            <button id="theme-toggle" class="theme-btn">
+                <img src="images/sun.svg" alt="Сменить тему">
             </button>
         </div>
     </header>
 
-    <main class="container section">
+    <main class="container">
         <h1>Решение алгоритмической задачи №121</h1>
-        <p>Проверка принадлежности числа <b>C</b> диапазону <b>[A, B]</b>.</p>
 
-        <div class="card">
-            <p>
-                Пользователь вводит три целых числа: <b>A</b>, <b>B</b>, <b>C</b>.<br>
-                Если выполняется условие <b>A ≤ C ≤ B</b>, данные отправляются на сервер.<br>
-                В противном случае выводится сообщение <i>«Не принадлежит»</i>.
-            </p>
+        <section class="task-section">
+            <div class="task-description">
+                <p><strong>Проверка принадлежности числа C диапазону [A, B].</strong></p>
+                <p>Пользователь вводит три целых числа: A, B, C.</p>
+                <p>Если выполняется условие A ≤ C ≤ B, данные отправляются на сервер.</p>
+                <p>В противном случае выводится сообщение «Не принадлежит».</p>
+            </div>
 
-            <!-- Форма отправки -->
-            <form id="rangeForm" action="https://httpbin.org/get" method="get" target="_blank">
-
-                <p>
-                    <label>Число A:<br>
-                        <input type="number" name="A" id="a" required>
-                    </label>
-                </p>
-
-                <p>
-                    <label>Число B:<br>
-                        <input type="number" name="B" id="b" required>
-                    </label>
-                </p>
-
-                <p>
-                    <label>Число C:<br>
-                        <input type="number" name="C" id="c" required>
-                    </label>
-                </p>
-
-                <!-- скрытые поля (по требованию задания) -->
-                <input type="hidden" name="task_number" value="121">
-                <input type="hidden" name="source" value="ebook-algorithm">
-
-                <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;">
-                    <button type="submit">Проверить и отправить</button>
-                    <button type="button" id="resetBtn">Сбросить</button>
+            <form id="algorithm-form">
+                <div class="form-group">
+                    <label for="a">Число A:</label>
+                    <input type="number" id="a" name="A" required>
+                </div>
+                <div class="form-group">
+                    <label for="b">Число B:</label>
+                    <input type="number" id="b" name="B" required>
+                </div>
+                <div class="form-group">
+                    <label for="c">Число C:</label>
+                    <input type="number" id="c" name="C" required>
                 </div>
 
-                <p id="result" style="margin-top:12px;"></p>
-            </form>
-        </div>
+                <div class="button-group">
+                    <button type="button" class="check-btn">Проверить и отправить</button>
+                    <button type="button" class="reset-btn secondary">Сбросить</button>
+                </div>
 
-        <div class="card" style="margin-top:12px;">
-            <p>
-                <b>Сервер для отправки:</b><br>
-                Используется учебный сервер <code>https://httpbin.org/get</code>,<br>
-                который показывает все переданные параметры.
-            </p>
+                <div class="result-box" id="result"></div>
+            </form>
+
+            <div class="server-info">
+                <p><strong>Сервер для отправки:</strong></p>
+                <p>Используется учебный сервер <code>https://httpbin.org/get</code>,</p>
+                <p>который показывает все переданные параметры.</p>
+            </div>
+        </section>
+
+        <div class="inner-nav">
+            <a href="#top">↑ К началу</a>
         </div>
     </main>
 
+    <script src="scripts.js"></script>
     <script>
-        const form = document.getElementById("rangeForm");
-        const result = document.getElementById("result");
-        const resetBtn = document.getElementById("resetBtn");
+        // ===== Алгоритмическая задача №121 =====
+        document.querySelector('.check-btn').addEventListener('click', function () {
+            const A = parseInt(document.getElementById('a').value);
+            const B = parseInt(document.getElementById('b').value);
+            const C = parseInt(document.getElementById('c').value);
+            const resultBox = document.getElementById('result');
 
-        form.addEventListener("submit", function (event) {
-            event.preventDefault();
+            // Проверяем, что все поля заполнены
+            if (isNaN(A) || isNaN(B) || isNaN(C)) {
+                resultBox.innerHTML = '<p style="color: red;">Пожалуйста, заполните все поля числами.</p>';
+                resultBox.className = 'result-box show result-error';
+                return;
+            }
 
-            const A = Number(document.getElementById("a").value);
-            const B = Number(document.getElementById("b").value);
-            const C = Number(document.getElementById("c").value);
+            console.log(`A = ${A}, B = ${B}, C = ${C}`);
+            console.log(`Проверка: ${A} ≤ ${C} ≤ ${B}`);
 
+            // Проверяем условие A ≤ C ≤ B
             if (A <= C && C <= B) {
-                result.textContent = `Число C = ${C} принадлежит диапазону [${A}; ${B}]. Данные отправлены на сервер.`;
-                result.style.color = "var(--accent)";
-                form.submit();
+                // Условие выполняется - отправляем на сервер
+                const url = `https://httpbin.org/get?A=${A}&B=${B}&C=${C}`;
+
+                resultBox.innerHTML = `
+                    <p style="color: green; font-weight: 600;">✓ Условие выполняется: ${A} ≤ ${C} ≤ ${B}</p>
+                    <p>Данные будут отправлены на сервер...</p>
+                    <p style="margin-top: 12px;"><strong>URL:</strong> <a href="${url}" target="_blank">${url}</a></p>
+                    <p style="margin-top: 8px;"><em>Откроется в новой вкладке через 2 секунды</em></p>
+                `;
+                resultBox.className = 'result-box show result-success';
+
+                console.log('✓ Условие выполняется. Отправка на сервер...');
+                console.log('URL:', url);
+
+                // Автоматически открываем в новой вкладке через 2 секунды
+                setTimeout(() => {
+                    window.open(url, '_blank');
+                }, 2000);
+
             } else {
-                result.textContent = "Не принадлежит";
-                result.style.color = "red";
+                // Условие не выполняется
+                resultBox.innerHTML = `
+                    <p style="color: red; font-weight: 600;">✗ Условие не выполняется</p>
+                    <p>Число C = ${C} не принадлежит диапазону [${A}, ${B}]</p>
+                    <p><strong>Результат:</strong> Не принадлежит</p>
+                `;
+                resultBox.className = 'result-box show result-error';
+
+                console.log('✗ Условие не выполняется');
+                console.log(`Результат: Не принадлежит`);
+                alert('Не принадлежит');
             }
         });
 
-        resetBtn.addEventListener("click", () => {
-            form.reset();
-            result.textContent = "";
+        // Сброс формы
+        document.querySelector('.reset-btn').addEventListener('click', function () {
+            document.getElementById('algorithm-form').reset();
+            document.getElementById('result').className = 'result-box';
+        });
+
+        // Enter для отправки
+        document.getElementById('algorithm-form').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                document.querySelector('.check-btn').click();
+            }
         });
     </script>
-
 </body>
 
 </html>

@@ -2,18 +2,107 @@
 <html lang="ru">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>О сервисе</title>
-  <link rel="stylesheet" href="Style Sheets/style.css">
-  <script src="JavaScripts/script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>О сервисе — Ebook</title>
+  <link rel="stylesheet" href="layout.css">
+  <link rel="stylesheet" href="font.css">
+  <style>
+    .about-hero {
+      padding: 60px 0;
+      text-align: center;
+    }
+
+    .about-hero h1 {
+      margin-bottom: 16px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin: 40px 0;
+    }
+
+    @media (max-width: 900px) {
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .feature-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .feature-card img {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 16px;
+      border-radius: 12px;
+    }
+
+    .table-wrap {
+      margin: 40px 0;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .table-wrap table {
+      width: 100%;
+      border-collapse: collapse;
+      background-image: url('images/table-bg.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .table-wrap th,
+    .table-wrap td {
+      padding: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(16, 16, 24, 0.78);
+    }
+
+    .light-theme .table-wrap th,
+    .light-theme .table-wrap td {
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      background: rgba(243, 243, 243, 0.82);
+    }
+
+    .table-wrap th {
+      font-weight: 600;
+      text-align: left;
+    }
+
+    .table-wrap td img {
+      max-width: 60px;
+      height: auto;
+      border-radius: 8px;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    .table-wrap a {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .table-wrap a:hover {
+      opacity: 0.8;
+    }
+  </style>
 </head>
 
-<body data-page="about">
-
+<body>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="logo" href="index.html"><img src="images/logo.svg" alt="Ebook"></a>
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="Ebook">
+      </a>
       <nav class="main-nav">
         <a href="index.html">Главная</a>
         <a href="about.html" class="active">О сервисе</a>
@@ -22,79 +111,88 @@
         <a href="algoritm.html">Задача</a>
         <a href="passport.html">Паспорт</a>
       </nav>
-      <button id="theme-toggle" class="theme-btn" type="button">
-        <img src="images/theme-toggle.svg" alt="">
+      <button id="theme-toggle" class="theme-btn">
+        <img src="images/sun.svg" alt="Сменить тему">
       </button>
     </div>
   </header>
 
-  <main class="container section">
-    <h1>Ebook — современная платформа для чтения электронных книг онлайн</h1>
-    <p>Мы предоставляем доступ к обширной библиотеке, включающей классику, научно-популярную литературу и современные
-      бестселлеры.</p>
+  <main class="container">
+    <section class="about-hero" id="top">
+      <h1>Ebook — современная платформа для чтения электронных книг онлайн</h1>
+      <p>Мы предоставляем доступ к обширной библиотеке, включающей классику, научно-популярную литературу и современные
+        бестселлеры.</p>
+    </section>
 
-    <div class="grid-3" id="features" style="margin-top:16px;">
-      <div class="card">
-        <img src="images/feature1.png" alt="feature1" style="width:100%; border-radius:14px;">
-        <h3>Комфортное чтение</h3>
-        <p>Ночной режим и изменение шрифта, создайте комфорт для своих глаз.</p>
-      </div>
-      <div class="card">
-        <img src="images/feature2.png" alt="feature2" style="width:100%; border-radius:14px;">
-        <h3>Аудио-поддержка книг</h3>
-        <p>Свыше 80 000 книг поддерживают аудио формат, удобно слушать в дороге.</p>
-      </div>
-      <div class="card">
-        <img src="images/feature3.png" alt="feature3" style="width:100%; border-radius:14px;">
-        <h3>Аннотирование и закладки</h3>
-        <p>Оставляйте заметки и закладки прямо в книгах.</p>
-      </div>
+    <div class="inner-nav">
+      <a href="#features">Особенности</a>
+      <a href="#table">Таблица</a>
+      <a href="#top">↑ К началу</a>
     </div>
 
-    <h2 style="margin-top:26px;">Таблица возможностей</h2>
+    <section id="features">
+      <h2>Преимущества нашего сервиса</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <img src="images/icons/night-mode.png" alt="Ночной режим">
+          <h3>Комфортное чтение</h3>
+          <p>Ночной режим и изменение шрифта, создайте комфорт для своих глаз.</p>
+        </div>
+        <div class="feature-card">
+          <img src="images/icons/audio.png" alt="Аудио">
+          <h3>Аудио-поддержка книг</h3>
+          <p>Свыше 80 000 книг поддерживают аудио формат, удобно слушать в дороге.</p>
+        </div>
+        <div class="feature-card">
+          <img src="images/icons/bookmarks.png" alt="Закладки">
+          <h3>Аннотирование и закладки</h3>
+          <p>Оставляйте заметки и закладки прямо в книгах.</p>
+        </div>
+      </div>
+    </section>
 
-    <!-- Важно: тут есть фон таблицы + картинка в ячейке + ссылки (текстовая и графическая) -->
-    <div class="table-wrap">
-      <table>
-        <tr>
-          <th>Раздел</th>
-          <th>Описание</th>
-          <th>Ссылка</th>
-        </tr>
-        <tr>
-          <td>Библиотека</td>
-          <td>Быстрый доступ к каталогу книг и подборкам.</td>
-          <td><a href="index.html#library">Перейти</a></td>
-        </tr>
-        <tr>
-          <td>Форматы</td>
-          <td>EPUB / PDF / MOBI и чтение в браузере.</td>
-          <td><a href="index.html#formats">Перейти</a></td>
-        </tr>
-        <tr>
-          <td>Анкета</td>
-          <td>
-            <div class="icon-row">
-              <img src="images/feedback-icon.svg" alt="icon">
-              <span>Заполните анкету для обратной связи.</span>
-            </div>
-          </td>
-          <td>
-            <!-- графическая ссылка -->
-            <a href="contacts.html#feedback" title="К анкете">
-              <img src="images/feedback-icon.svg" alt="go" style="width:26px;height:26px;">
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td>Внешний ресурс</td>
-          <td>Пример внешней ссылки (открывается в новой вкладке).</td>
-          <td><a href="https://github.com/vmarshirov/g06u28" target="_blank" rel="noopener">Открыть</a></td>
-        </tr>
-      </table>
-    </div>
+    <section id="table">
+      <h2>Таблица возможностей</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Раздел</th>
+              <th>Описание</th>
+              <th>Ссылка</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Библиотека</td>
+              <td>Быстрый доступ к каталогу книг и подборкам.</td>
+              <td><a href="index.html#library">Перейти</a></td>
+            </tr>
+            <tr>
+              <td>Форматы</td>
+              <td>EPUB / PDF / MOBI и чтение в браузере.</td>
+              <td><a href="index.html#formats">Перейти</a></td>
+            </tr>
+            <tr>
+              <td>
+                <img src="images/icons/form.png" alt="Анкета">
+                Анкета
+              </td>
+              <td>Заполните анкету для обратной связи.</td>
+              <td><a href="contacts.html">Перейти</a></td>
+            </tr>
+            <tr>
+              <td>Внешний ресурс</td>
+              <td>Пример внешней ссылки (открывается в новой вкладке).</td>
+              <td><a href="https://github.com/vmarshirov/g06u28" target="_blank">Открыть</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
   </main>
 
+  <script src="scripts.js"></script>
 </body>
 
 </html>
