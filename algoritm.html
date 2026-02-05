@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Алгоритмическая задача №121</title>
+
+    <link rel="stylesheet" href="Style Sheets/style.css">
+    <script src="JavaScripts/script.js" defer></script>
+</head>
+
+<body data-page="algoritm">
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="logo" href="index.html">
+                <img src="images/logo.svg" alt="Ebook">
+            </a>
+
+            <nav class="main-nav">
+                <a href="index.html">Главная</a>
+                <a href="about.html">О сервисе</a>
+                <a href="gallery.html">Галерея</a>
+                <a href="contacts.html">Контакты</a>
+                <a href="algoritm.html" class="active">Задача</a>
+                <a href="passport.html">Паспорт</a>
+            </nav>
+
+            <button id="theme-toggle" class="theme-btn" type="button">
+                <img src="images/theme-toggle.svg" alt="Переключить тему">
+            </button>
+        </div>
+    </header>
+
+    <main class="container section">
+        <h1>Решение алгоритмической задачи №121</h1>
+        <p>Проверка принадлежности числа <b>C</b> диапазону <b>[A, B]</b>.</p>
+
+        <div class="card">
+            <p>
+                Пользователь вводит три целых числа: <b>A</b>, <b>B</b>, <b>C</b>.<br>
+                Если выполняется условие <b>A ≤ C ≤ B</b>, данные отправляются на сервер.<br>
+                В противном случае выводится сообщение <i>«Не принадлежит»</i>.
+            </p>
+
+            <!-- Форма отправки -->
+            <form id="rangeForm" action="https://httpbin.org/get" method="get" target="_blank">
+
+                <p>
+                    <label>Число A:<br>
+                        <input type="number" name="A" id="a" required>
+                    </label>
+                </p>
+
+                <p>
+                    <label>Число B:<br>
+                        <input type="number" name="B" id="b" required>
+                    </label>
+                </p>
+
+                <p>
+                    <label>Число C:<br>
+                        <input type="number" name="C" id="c" required>
+                    </label>
+                </p>
+
+                <!-- скрытые поля (по требованию задания) -->
+                <input type="hidden" name="task_number" value="121">
+                <input type="hidden" name="source" value="ebook-algorithm">
+
+                <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;">
+                    <button type="submit">Проверить и отправить</button>
+                    <button type="button" id="resetBtn">Сбросить</button>
+                </div>
+
+                <p id="result" style="margin-top:12px;"></p>
+            </form>
+        </div>
+
+        <div class="card" style="margin-top:12px;">
+            <p>
+                <b>Сервер для отправки:</b><br>
+                Используется учебный сервер <code>https://httpbin.org/get</code>,<br>
+                который показывает все переданные параметры.
+            </p>
+        </div>
+    </main>
+
+    <script>
+        const form = document.getElementById("rangeForm");
+        const result = document.getElementById("result");
+        const resetBtn = document.getElementById("resetBtn");
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const A = Number(document.getElementById("a").value);
+            const B = Number(document.getElementById("b").value);
+            const C = Number(document.getElementById("c").value);
+
+            if (A <= C && C <= B) {
+                result.textContent = `Число C = ${C} принадлежит диапазону [${A}; ${B}]. Данные отправлены на сервер.`;
+                result.style.color = "var(--accent)";
+                form.submit();
+            } else {
+                result.textContent = "Не принадлежит";
+                result.style.color = "red";
+            }
+        });
+
+        resetBtn.addEventListener("click", () => {
+            form.reset();
+            result.textContent = "";
+        });
+    </script>
+
+</body>
+
+</html>

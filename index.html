@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ebook — Главная</title>
+  <link rel="stylesheet" href="Style Sheets/style.css">
+  <script src="JavaScripts/script.js" defer></script>
+</head>
+
+<body data-page="index">
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">
+        <img src="images/logo.svg" alt="Ebook">
+      </a>
+
+      <nav class="main-nav">
+        <a href="index.html" class="active">Главная</a>
+        <a href="about.html">О сервисе</a>
+        <a href="gallery.html">Галерея</a>
+        <a href="contacts.html">Контакты</a>
+        <a href="algoritm.html">Задача</a>
+        <a href="passport.html">Паспорт</a>
+      </nav>
+
+      <button id="theme-toggle" class="theme-btn" type="button" aria-label="Переключить тему">
+        <img src="images/theme-toggle.svg" alt="">
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="intro">
+      <div class="container">
+        <h1>Читайте 10 000+ электронных книг онлайн</h1>
+
+        <nav class="inner-nav">
+          <a href="#intro">Введение</a>
+          <a href="#library">Библиотека</a>
+          <a href="#formats">Поддерживаемые форматы</a>
+          <a href="#tariffs">Тарифы</a>
+        </nav>
+      </div>
+    </section>
+
+    <section class="section" id="library">
+      <div class="container grid-2">
+        <div class="card">
+          <h2>Библиотека</h2>
+          <ul>
+            <li>Классическая литература</li>
+            <li>Современная проза</li>
+            <li>Научно-популярные книги</li>
+          </ul>
+        </div>
+        <div class="card">
+          <img src="images/library-preview.png" alt="Превью библиотеки" style="width:100%; border-radius:16px;">
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="formats">
+      <div class="container grid-2">
+        <div class="card">
+          <h2>Поддерживаемые форматы</h2>
+          <ol>
+            <li>EPUB</li>
+            <li>PDF</li>
+            <li>MOBI</li>
+          </ol>
+          <p>Совместимость: читалки, смартфоны, ПК, браузер.</p>
+        </div>
+        <div class="card">
+          <img src="images/formats-preview.png" alt="Превью форматов" style="width:100%; border-radius:16px;">
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tariffs">
+      <div class="container">
+        <h2>Тарифы</h2>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>Студенческий</h3>
+            <p>₽99 / месяц</p>
+            <div class="icon-row">
+              <img src="images/check.svg" alt="">
+              <span>Доступ к расширенной библиотеке</span>
+            </div>
+            <div class="icon-row">
+              <img src="images/check.svg" alt="">
+              <span>Синхронизация до 2 устройств</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Стандартный</h3>
+            <p>₽149 / месяц</p>
+            <div class="icon-row">
+              <img src="images/check.svg" alt="">
+              <span>Доступ к расширенной библиотеке</span>
+            </div>
+            <div class="icon-row">
+              <img src="images/check.svg" alt="">
+              <span>Синхронизация до 2 устройств</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Семейный</h3>
+            <p>₽399 / месяц</p>
+            <div class="icon-row">
+              <img src="images/check.svg" alt="">
+              <span>Всё из «Стандартного»</span>
+            </div>
+            <div class="icon-row">
+              <img src="images/check.svg" alt="">
+              <span>Неограниченные устройства</span>
+            </div>
+            <div class="icon-row">
+              <img src="images/check.svg" alt="">
+              <span>Ранний доступ к релизам</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+</body>
+
+</html>

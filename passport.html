@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Паспорт — DOM и замена по клику</title>
+    <link rel="stylesheet" href="Style Sheets/style.css">
+    <script src="JavaScripts/script.js" defer></script>
+</head>
+
+<body data-page="passport">
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="logo" href="index.html"><img src="images/logo.svg" alt="Ebook"></a>
+            <nav class="main-nav">
+                <a href="index.html">Главная</a>
+                <a href="about.html">О сервисе</a>
+                <a href="gallery.html">Галерея</a>
+                <a href="contacts.html">Контакты</a>
+                <a href="algoritm.html">Задача</a>
+                <a href="passport.html" class="active">Паспорт</a>
+            </nav>
+            <button id="theme-toggle" class="theme-btn" type="button">
+                <img src="images/theme-toggle.svg" alt="">
+            </button>
+        </div>
+    </header>
+
+    <main class="container section">
+        <h1>DOM_JS. Считываем информацию из DOM</h1>
+
+        <div class="card">
+            <p>Фамилия: <span id="surname">Балаян</span></p>
+            <p>Имя: <span id="name">Анаит</span></p>
+            <p>Отчество: <span id="patronymic">Эдуардовна</span></p>
+            <p>Год рождения: <span id="year">2002</span></p>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;">
+                <button type="button" id="btnRead">Считать из DOM</button>
+                <button type="button" id="btnLatin">Изменяем кириллицу на латиницу по клику</button>
+            </div>
+
+            <p id="out" style="margin-top:12px;"></p>
+        </div>
+
+        <div class="card" style="margin-top:12px;">
+            <p><b>Подсказка для отчёта:</b> открой DevTools → Console и выполни получение через DOM.</p>
+            <p>Например (как в задании): <code>document.getElementsByTagName('p')[2].childNodes[1].innerText</code></p>
+        </div>
+    </main>
+
+    <script>
+        const out = document.getElementById("out");
+
+        document.getElementById("btnRead").addEventListener("click", () => {
+            const surname = document.getElementById("surname").innerText;
+            const name = document.getElementById("name").innerText;
+            const year = document.getElementById("year").innerText;
+
+            out.textContent = `Считано из DOM: ${surname} ${name}, год рождения ${year}`;
+            out.style.color = "var(--accent)";
+            console.log("DOM read:", surname, name, year);
+        });
+
+        document.getElementById("btnLatin").addEventListener("click", () => {
+            document.getElementById("surname").innerText = "Balayan";
+            document.getElementById("name").innerText = "Anait";
+            document.getElementById("year").innerText = "2002";
+
+            out.textContent = "Заменено на латиницу по клику.";
+            out.style.color = "var(--accent)";
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Контакты</title>
+    <link rel="stylesheet" href="Style Sheets/style.css">
+    <script src="JavaScripts/script.js" defer></script>
+</head>
+
+<body data-page="contacts">
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="logo" href="index.html"><img src="images/logo.svg" alt="Ebook"></a>
+            <nav class="main-nav">
+                <a href="index.html">Главная</a>
+                <a href="about.html">О сервисе</a>
+                <a href="gallery.html">Галерея</a>
+                <a href="contacts.html" class="active">Контакты</a>
+                <a href="algoritm.html">Задача</a>
+                <a href="passport.html">Паспорт</a>
+            </nav>
+            <button id="theme-toggle" class="theme-btn" type="button">
+                <img src="images/theme-toggle.svg" alt="">
+            </button>
+        </div>
+    </header>
+
+    <main class="container section">
+        <h1>Контактная информация</h1>
+        <p>Вы можете связаться с нами любым удобным способом</p>
+
+        <div class="grid-2">
+            <div class="card">
+                <div class="icon-row">
+                    <img src="images/icon-mail.svg" alt="">
+                    <strong>Электронная почта</strong>
+                </div>
+                <p>support@ebookhub.ru — техподдержка<br>books@ebookhub.ru — добавление книг</p>
+
+                <div class="icon-row" style="margin-top:12px;">
+                    <img src="images/icon-phone.svg" alt="">
+                    <strong>Телефон</strong>
+                </div>
+                <p>+7 (900) 000-00-00 — общие вопросы<br>+7 (900) 111-11-11 — поддержка</p>
+            </div>
+
+            <div class="card">
+                <img src="images/contacts-browser-preview.png" alt="preview" style="width:100%; border-radius:16px;">
+            </div>
+        </div>
+
+        <h2 id="feedback">Обратная связь</h2>
+        <p>У вас есть идеи, замечания или пожелания? Заполните форму ниже</p>
+
+        <!-- Форма 1: контактные данные (требование) -->
+        <div class="card" style="margin-top:12px;">
+            <h3>Форма контактных данных</h3>
+            <form action="https://httpbin.org/post" method="post" target="_blank">
+                <p><input name="surname" placeholder="Фамилия" required></p>
+                <p><input name="name" placeholder="Имя" required></p>
+                <p><input name="group" placeholder="Группа"></p>
+                <p><input name="phone" placeholder="Мобильный телефон"></p>
+                <p><input name="email" type="email" placeholder="Электронная почта"></p>
+                <p><input name="send_date" type="date"></p>
+                <p><button type="submit">Отправить</button></p>
+            </form>
+        </div>
+
+        <!-- Форма 2: оригинальные данные (требование: text, number, radio, checkbox, date, password, hidden + default) -->
+        <div class="card" style="margin-top:12px;">
+            <h3>Форма заказа (оригинальные данные)</h3>
+            <form action="https://httpbin.org/post" method="post" target="_blank">
+                <input type="hidden" name="source" value="ebook-order-default">
+
+                <p><label>Название книги (text):<br>
+                        <input type="text" name="book_title" value="Любая книга" required>
+                    </label></p>
+
+                <p><label>Количество (number):<br>
+                        <input type="number" name="qty" value="1" min="1">
+                    </label></p>
+
+                <p>Тип доступа (radio):<br>
+                    <label><input type="radio" name="access" value="month" checked> На месяц</label><br>
+                    <label><input type="radio" name="access" value="year"> На год</label>
+                </p>
+
+                <p>Опции (checkbox):<br>
+                    <label><input type="checkbox" name="options_notes" value="yes" checked> Закладки и
+                        заметки</label><br>
+                    <label><input type="checkbox" name="options_audio" value="yes"> Аудио-версия</label>
+                </p>
+
+                <p><label>Дата начала (date):<br>
+                        <input type="date" name="start_date">
+                    </label></p>
+
+                <p><label>Пароль (password):<br>
+                        <input type="password" name="account_password" value="12345">
+                    </label></p>
+
+                <p><button type="submit">Отправить заказ</button></p>
+            </form>
+        </div>
+    </main>
+
+</body>
+
+</html>
