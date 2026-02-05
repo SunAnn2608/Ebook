@@ -1,3 +1,4 @@
+/* ===== Цветовые переменные ===== */
 :root {
     --bg: #050509;
     --text: #fff;
@@ -5,229 +6,606 @@
     --accent: #a8ff6a;
     --card: #101018;
     --border: #242438;
+    --link-hover: #d0ee11;
 }
 
+/* Светлая тема */
 .light-theme {
     --bg: #e6e6e6;
     --text: #111;
     --muted: #3a3a3a;
     --card: #f3f3f3;
     --border: #cfcfcf;
+    --link-hover: #a8ff6a;
 }
 
+/* ===== Сброс и базовые настройки ===== */
 * {
-    box-sizing: border-box
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
     margin: 0;
-    font-family: Inter, system-ui, Arial, sans-serif;
+    font-family: 'Inter', system-ui, Arial, sans-serif;
     background: var(--bg);
     color: var(--text);
-    transition: background .25s, color .25s;
+    line-height: 1.6;
+    transition: background 0.25s, color 0.25s;
+    min-height: 100vh;
 }
 
+/* ===== Ссылки ===== */
 a {
     color: var(--text);
-    text-decoration: none
+    text-decoration: none;
+    transition: opacity 0.2s, color 0.2s;
 }
 
+a:hover {
+    opacity: 0.9;
+    color: var(--link-hover);
+}
+
+/* ===== Контейнер ===== */
 .container {
     width: 1180px;
     max-width: 94%;
-    margin: 0 auto
+    margin: 0 auto;
+    padding: 0 15px;
 }
 
+/* ===== Шапка сайта ===== */
 .site-header {
     padding: 18px 0;
     position: sticky;
     top: 0;
-    background: rgba(5, 5, 9, .85);
+    background: rgba(5, 5, 9, 0.85);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, .08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: 1000;
 }
 
 .light-theme .site-header {
-    background: rgba(230, 230, 230, .85);
-    border-bottom: 1px solid rgba(0, 0, 0, .08);
+    background: rgba(230, 230, 230, 0.85);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .header-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 16px
+    gap: 16px;
 }
 
+/* ===== Логотип ===== */
 .logo img {
     height: 28px;
-    display: block
+    display: block;
 }
 
+/* ===== Основная навигация ===== */
 .main-nav {
     display: flex;
     gap: 18px;
-    flex-wrap: wrap
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .main-nav a {
     color: var(--text);
-    opacity: .9
+    opacity: 0.9;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: all 0.2s;
 }
 
 .main-nav a:hover {
-    opacity: 1
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.light-theme .main-nav a:hover {
+    background: rgba(0, 0, 0, 0.06);
 }
 
 .main-nav a.active {
     color: var(--accent);
-    opacity: 1
+    opacity: 1;
+    background: rgba(168, 255, 106, 0.1);
+    font-weight: 600;
 }
 
+/* ===== Кнопка переключения темы ===== */
 .theme-btn {
     border: none;
     background: transparent;
     padding: 6px;
     cursor: pointer;
     border-radius: 999px;
+    transition: transform 0.2s;
+}
+
+.theme-btn:hover {
+    transform: rotate(180deg);
 }
 
 .theme-btn img {
     width: 28px;
     height: 28px;
-    display: block
+    display: block;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
-.hero {
-    padding: 56px 0 32px;
-    background:
-        linear-gradient(180deg, rgba(5, 5, 9, .25), rgba(5, 5, 9, 1)),
-        url("../images/hero-bg.jpg") center/cover no-repeat;
-    border-bottom: 1px solid rgba(255, 255, 255, .08);
-}
-
+/* ===== Заголовки ===== */
 h1 {
     margin: 0 0 14px;
     font-size: 44px;
-    line-height: 1.1
+    line-height: 1.1;
+    font-weight: 700;
 }
 
 h2 {
     margin: 28px 0 12px;
-    font-size: 28px
+    font-size: 28px;
+    font-weight: 600;
 }
 
+h3 {
+    margin: 20px 0 10px;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+h4 {
+    margin: 16px 0 8px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* ===== Текст ===== */
 p {
-    color: var(--muted)
+    color: var(--muted);
+    margin-bottom: 16px;
 }
 
+strong {
+    color: var(--text);
+    font-weight: 600;
+}
+
+em {
+    font-style: italic;
+}
+
+/* ===== Секции ===== */
 .section {
-    padding: 26px 0
+    padding: 40px 0;
 }
 
+/* ===== Карточки ===== */
 .card {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 18px;
     padding: 18px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* ===== Внутренняя навигация (якоря) ===== */
 .inner-nav {
     display: flex;
     gap: 14px;
     flex-wrap: wrap;
-    margin-top: 18px
+    margin-top: 18px;
 }
 
 .inner-nav a {
-    background: rgba(255, 255, 255, .08);
+    background: rgba(255, 255, 255, 0.08);
     padding: 8px 12px;
     border-radius: 999px;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.inner-nav a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--accent);
 }
 
 .light-theme .inner-nav a {
-    background: rgba(0, 0, 0, .06)
+    background: rgba(0, 0, 0, 0.06);
 }
 
+.light-theme .inner-nav a:hover {
+    background: rgba(0, 0, 0, 0.12);
+}
+
+/* ===== Сетки ===== */
 .grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 18px
+    gap: 24px;
 }
 
 .grid-3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 18px
+    gap: 24px;
 }
 
-@media (max-width:900px) {
-    .grid-3 {
-        grid-template-columns: 1fr
-    }
-
-    .grid-2 {
-        grid-template-columns: 1fr
-    }
-}
-
-.gallery-grid {
+.grid-4 {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
+    gap: 24px;
 }
 
-@media (max-width:900px) {
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
+/* ===== Адаптивность ===== */
+@media (max-width: 900px) {
+
+    .grid-3,
+    .grid-4,
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    .main-nav {
+        gap: 12px;
+    }
+
+    .main-nav a {
+        font-size: 14px;
+        padding: 6px 10px;
     }
 }
 
-.gallery-grid img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 16px;
-    display: block;
-    border: 1px solid var(--border);
+@media (max-width: 600px) {
+    .header-inner {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .inner-nav {
+        flex-direction: column;
+    }
 }
 
+/* ===== Списки ===== */
+ul,
+ol {
+    margin: 16px 0;
+    padding-left: 30px;
+    color: var(--muted);
+}
+
+ul li,
+ol li {
+    margin-bottom: 8px;
+}
+
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+    margin: 8px 0;
+}
+
+/* Маркированный список */
+ul {
+    list-style-type: disc;
+}
+
+/* Нумерованный список */
+ol {
+    list-style-type: decimal;
+}
+
+/* Вложенные списки */
+ul ul {
+    list-style-type: circle;
+}
+
+ul ul ul {
+    list-style-type: square;
+}
+
+/* ===== Таблицы ===== */
 .table-wrap {
     border-radius: 18px;
     overflow: hidden;
     border: 1px solid var(--border);
-    background-image: url("../images/hero-bg.jpg");
-    /* запасной фон */
+    margin: 24px 0;
 }
 
 .table-wrap table {
     width: 100%;
     border-collapse: collapse;
-    background-image: url("../images/library-preview.png");
+    background-image: url('../images/table-bg.jpg');
     background-size: cover;
     background-position: center;
 }
 
 .table-wrap th,
 .table-wrap td {
-    padding: 12px;
-    border: 1px solid rgba(255, 255, 255, .12);
-    background: rgba(16, 16, 24, .78);
+    padding: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(16, 16, 24, 0.78);
+    text-align: left;
 }
 
 .light-theme .table-wrap th,
 .light-theme .table-wrap td {
-    border: 1px solid rgba(0, 0, 0, .12);
-    background: rgba(243, 243, 243, .82);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: rgba(243, 243, 243, 0.82);
 }
 
-.icon-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.table-wrap th {
+    font-weight: 600;
+    background: rgba(0, 0, 0, 0.2);
 }
 
-.icon-row img {
-    width: 22px;
-    height: 22px
+.table-wrap a {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+.table-wrap a:hover {
+    opacity: 0.8;
+}
+
+/* ===== Формы ===== */
+form {
+    margin: 24px 0;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: var(--text);
+}
+
+input,
+textarea,
+select,
+button {
+    font-family: 'Inter', system-ui, Arial, sans-serif;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+input[type="password"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--card);
+    color: var(--text);
+    font-size: 16px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(168, 255, 106, 0.2);
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    width: auto;
+    margin-right: 8px;
+}
+
+button {
+    background: var(--accent);
+    color: #000;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    transition: opacity 0.2s, transform 0.1s;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+button.secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text);
+}
+
+/* ===== Изображения ===== */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+figure {
+    margin: 16px 0;
+}
+
+figcaption {
+    text-align: center;
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: 8px;
+}
+
+/* ===== Галерея ===== */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    max-width: 100px;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    transition: transform 0.2s;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-grid figcaption {
+    margin-top: 8px;
+    font-size: 14px;
+    color: var(--muted);
+}
+
+/* ===== Код ===== */
+code {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    color: var(--accent);
+}
+
+pre {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 16px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 16px 0;
+}
+
+/* ===== Результаты операций ===== */
+.result-box {
+    margin-top: 20px;
+    padding: 16px;
+    border-radius: 8px;
+    display: none;
+}
+
+.result-box.show {
+    display: block;
+}
+
+.result-success {
+    background: rgba(0, 200, 0, 0.1);
+    border: 1px solid rgba(0, 200, 0, 0.3);
+    color: #00c800;
+}
+
+.result-error {
+    background: rgba(200, 0, 0, 0.1);
+    border: 1px solid rgba(200, 0, 0, 0.3);
+    color: #c80000;
+}
+
+/* ===== Подсказки ===== */
+.hint-box {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 24px;
+    font-size: 14px;
+    color: var(--muted);
+}
+
+/* ===== Футер (если понадобится) ===== */
+.site-footer {
+    padding: 40px 0;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+}
+
+/* ===== Плавная прокрутка к якорям ===== */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ===== Утилиты ===== */
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.mt-1 {
+    margin-top: 8px;
+}
+
+.mt-2 {
+    margin-top: 16px;
+}
+
+.mt-3 {
+    margin-top: 24px;
+}
+
+.mb-1 {
+    margin-bottom: 8px;
+}
+
+.mb-2 {
+    margin-bottom: 16px;
+}
+
+.mb-3 {
+    margin-bottom: 24px;
+}
+
+/* ===== Печать ===== */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+
+    .site-header,
+    .site-footer,
+    .theme-btn,
+    .inner-nav {
+        display: none;
+    }
+
+    a::after {
+        content: " (" attr(href) ")";
+        font-size: 12px;
+        color: #666;
+    }
 }
